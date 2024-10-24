@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>下载页面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .container img {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
+        }
+
+        .container h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .container p {
+            margin: 10px 0;
+            font-size: 16px;
+            color: #666;
+        }
+
+        .container a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .container a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <img class=" long-press-able-img " src="./1024x1024.png" alt="应用图标">
+        <h1>下载我们的应用</h1>
+        <p id="message">请在浏览器中打开此页面以下载应用。</p>
+        <a id="downloadLink" href="http://192.168.10.196:8199/asset-debug-v2.0.1.apk"
+            download="asset-debug-v2.0.1.apke.apk" style="display: none;">立即下载</a>
+        <script>
+            function isWeixinBrowser() {
+                var userAgent = navigator.userAgent.toLowerCase();
+                return userAgent.match(/MicroMessenger/i) == "micromessenger";
+            }
+
+            window.onload = function () {
+                if (isWeixinBrowser()) {
+                    document.getElementById('message').innerText = '点击右上角在浏览器中打开以下载应用。';
+                } else {
+                    document.getElementById('downloadLink').style.display = 'inline-block';
+                    document.getElementById('message').innerText = '点击下方按钮立即下载应用。';
+                }
+            }
+        </script>
+    </div>
+</body>
+
+</html>
